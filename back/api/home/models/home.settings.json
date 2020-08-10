@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "homes",
+  "info": {
+    "name": "Home"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "richtext"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "contactLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.link"
+    }
+  }
+}

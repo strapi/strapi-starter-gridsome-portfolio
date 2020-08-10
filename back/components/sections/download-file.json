@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_download_files",
+  "info": {
+    "name": "downloadFile",
+    "icon": "download"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "file": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

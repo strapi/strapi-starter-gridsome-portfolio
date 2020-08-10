@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "name": "About"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.download-file",
+        "sections.images-slider",
+        "sections.large-media",
+        "sections.rich-text"
+      ]
+    }
+  }
+}
