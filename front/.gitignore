@@ -303,4 +303,3 @@ $RECYCLE.BIN/
 src/.temp
 dist
 .env
-.env.*

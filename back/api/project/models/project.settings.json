@@ -40,6 +40,10 @@
       ],
       "plugin": "upload",
       "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }

@@ -6,11 +6,30 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = function (api) {
-  api.loadSource(({ addCollection }) => {
+  api.loadSource((store) => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
   })
 
-  api.createPages(({ createPage }) => {
+  // Fetch all Strapi projects
+  api.createPages(async ({ createPage, graphql }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api/
+    const { data } = await graphql(`{
+      strapi {
+        projects {
+          slug
+        }
+      }
+    }`)
+
+    // Create a page for each project
+    data.strapi.projects.forEach((project) => {
+      createPage({
+        path: `/project/${project.slug}`,
+        component: './src/templates/Project.vue',
+        context: {
+          slug: project.slug
+        }
+      })
+    })
   })
 }
