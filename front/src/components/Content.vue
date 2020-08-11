@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-for="contentSection in content" :key="contentSection.id">
+    <div
+      v-for="contentSection in content"
+      :key="contentSection.__typename + contentSection.id"
+    >
       <!-- Display the right component based on type name -->
       <div v-if="contentSection.__typename === 'strapiTypes_ComponentSectionsRichText'">
         <RichText :data="contentSection" />

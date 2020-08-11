@@ -1,21 +1,23 @@
 <template>
-  <div class="layout">
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/about/">About</g-link>
-      </nav>
-    </header>
-    <slot/>
+  <div class="min-h-screen flex flex-col justify-between text-black">
+    <!-- Content anchored to top -->
+    <div>
+      <Navbar />
+      <slot />
+    </div>
+    <!-- Content anchored to bottom -->
+    <Footer />
   </div>
 </template>
 
-<static-query>
-query {
-  metadata {
-    siteName
+<script>
+import Navbar from '~/components/Navbar'
+import Footer from '~/components/Footer'
+
+export default {
+  components: {
+    Navbar,
+    Footer,
   }
 }
-</static-query>
+</script>

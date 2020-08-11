@@ -14,6 +14,9 @@ module.exports = {
         fieldName: 'strapi',
         typeName: 'strapiTypes'
       }
+    },
+    {
+      use: "gridsome-plugin-tailwindcss",
     }
   ],
 }

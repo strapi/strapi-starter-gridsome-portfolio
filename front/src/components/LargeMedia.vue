@@ -1,10 +1,14 @@
 <template>
-  <div>
+  <div class="py-4">
     <g-image
       :alt="data.description"
       :src="getMediaUrl(data.media.url)"
+      v-if="data.media.mime.startsWith('image')"
     />
-    <p>{{ data.description }}</p>
+    <video controls v-if="data.media.mime.startsWith('video')">
+      <source :src="data.media.url" type=":data.media.mime" />
+    </video>
+    <p class="text-center text-lg italic mt-2">{{ data.description }}</p>
   </div>
 </template>
 
@@ -18,10 +22,3 @@ export default {
   }
 }
 </script>
-
-<style>
-img {
-  width: 100vw;
-  height: auto;
-}
-</style>

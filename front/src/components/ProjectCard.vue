@@ -1,0 +1,53 @@
+<template>
+  <div class="container flex flex-col md:flex-row gap-6">
+    <g-link
+      :to="'project/' + project.slug"
+      class="w-full md:w-6/12 flex-shrink-0"
+    >
+    <g-image
+      :alt="project.title"
+      :src="getMediaUrl(project.coverImage.url)"
+      class="w-full h-auto"
+    />
+    </g-link>
+    <div class="flex flex-col justify-between py-4">
+      <div>
+        <g-link :to="'project/' + project.slug">
+          <h3 class="text-2xl font-semibold inline-block hover:underline">
+            {{ project.title }}
+          </h3>
+        </g-link>
+        <div class="flex flex-row gap-4 py-2">
+          <div
+            v-for="category in project.categories"
+            :key="category.id"
+            class="bg-secondary-100 text-secondary-900 uppercase tracking-wide px-1 text-sm font-semibold"
+          >
+            {{ category.title }}
+          </div>
+        </div>
+        <p>
+          {{ project.description }}
+        </p>
+      </div>
+      <g-link
+        :to="'project/' + project.slug"
+        :title="project.title"
+        class="font-medium"
+      >
+        View project 👉
+      </g-link>
+    </div>
+  </div>
+</template>
+
+<script>
+import { getMediaUrl } from '~/utils/medias'
+
+export default {
+  props: ['project'],
+  methods: {
+    getMediaUrl,
+  }
+}
+</script>

@@ -1,8 +1,27 @@
+const { colors } = require('tailwindcss/defaultTheme')
+
 module.exports = {
   purge: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        ...colors,
+        primary: colors.green,
+        secondary: colors.blue,
+      },
+      container: {
+        center: true,
+        padding: {
+          default: '0.5rem',
+          sm: '1rem',
+          lg: '8rem',
+          xl: '12rem',
+        },
+      },
+    },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

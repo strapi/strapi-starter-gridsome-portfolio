@@ -1,12 +1,16 @@
 <template>
   <Layout>
-    <h1>{{ $page.strapi.projects[0].title }}</h1>
-    <p>{{ $page.strapi.projects[0].description }}</p>
-    <g-image
-      :alt="$page.strapi.projects[0].title"
-      :src="getMediaUrl($page.strapi.projects[0].coverImage.url)"
-    />
-    <Content :content="$page.strapi.projects[0].content" />
+    <div class="prose md:prose-lg mx-auto mt-10">
+      <h1>
+        {{ $page.strapi.projects[0].title }}
+      </h1>
+      <p class="font-medium">{{ $page.strapi.projects[0].description }}</p>
+      <g-image
+        :alt="$page.strapi.projects[0].title"
+        :src="getMediaUrl($page.strapi.projects[0].coverImage.url)"
+      />
+    </div>
+    <Content :content="$page.strapi.projects[0].content" class="mt-8" />
   </Layout>
 </template>
 
@@ -37,6 +41,7 @@ query ($slug: String!) {
           media {
             id
             url
+            mime
           }
           description
         }
