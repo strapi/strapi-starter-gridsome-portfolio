@@ -6,7 +6,7 @@
     >
     <g-image
       :alt="project.title"
-      :src="getMediaUrl(project.coverImage.url)"
+      :src="getStrapiMedia(project.coverImage.url)"
       class="w-full h-auto"
     />
     </g-link>
@@ -42,12 +42,12 @@
 </template>
 
 <script>
-import { getMediaUrl } from '~/utils/medias'
+import { getStrapiMedia } from '~/utils/medias'
 
 export default {
   props: ['project'],
   methods: {
-    getMediaUrl,
+    getStrapiMedia,
   }
 }
 </script>

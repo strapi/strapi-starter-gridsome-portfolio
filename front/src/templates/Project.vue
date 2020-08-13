@@ -7,7 +7,7 @@
       <p class="font-medium">{{ $page.strapi.projects[0].description }}</p>
       <g-image
         :alt="$page.strapi.projects[0].title"
-        :src="getMediaUrl($page.strapi.projects[0].coverImage.url)"
+        :src="getStrapiMedia($page.strapi.projects[0].coverImage.url)"
       />
     </div>
     <Content :content="$page.strapi.projects[0].content" class="mt-8" />
@@ -69,11 +69,11 @@ query ($slug: String!) {
 
 <script>
 import Content from '~/components/Content'
-import { getMediaUrl } from '~/utils/medias'
+import { getStrapiMedia } from '~/utils/medias'
 
 export default {
   methods: {
-    getMediaUrl,
+    getStrapiMedia,
   },
   components: {
     Content,

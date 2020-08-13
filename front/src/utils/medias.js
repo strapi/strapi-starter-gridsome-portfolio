@@ -1,4 +1,4 @@
-export function getMediaUrl(url) {
+export function getStrapiMedia(url) {
   // Check if URL is a local path
   if (url.startsWith('/')) {
     // Prepend Strapi address

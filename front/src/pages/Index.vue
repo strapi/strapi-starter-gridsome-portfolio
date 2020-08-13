@@ -49,11 +49,11 @@ query {
 <script>
 import ProjectCard from '~/components/ProjectCard'
 import RichText from '~/components/RichText'
-import { getMediaUrl } from '~/utils/medias'
+import { getStrapiMedia } from '~/utils/medias'
 
 export default {
   methods: {
-    getMediaUrl,
+    getStrapiMedia,
   },
   components: {
     ProjectCard,
