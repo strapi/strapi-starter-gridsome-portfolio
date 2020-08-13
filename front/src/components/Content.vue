@@ -6,10 +6,16 @@
     >
       <!-- Display the right component based on type name -->
       <div v-if="contentSection.__typename === 'strapiTypes_ComponentSectionsRichText'">
-        <RichText :data="contentSection" />
+        <RichText :data="contentSection" class="container" />
       </div>
       <div v-if="contentSection.__typename === 'strapiTypes_ComponentSectionsLargeMedia'">
         <LargeMedia :data="contentSection" />
+      </div>
+      <div v-if="contentSection.__typename === 'strapiTypes_ComponentSectionsDownloadFile'">
+        <DownloadFile :data="contentSection" />
+      </div>
+      <div v-if="contentSection.__typename === 'strapiTypes_ComponentSectionsImagesSlider'">
+        <Slider :data="contentSection" />
       </div>
     </div>
   </div>
@@ -18,12 +24,16 @@
 <script>
 import RichText from '~/components/RichText'
 import LargeMedia from '~/components/LargeMedia'
+import DownloadFile from '~/components/DownloadFile'
+import Slider from '~/components/Slider'
 
 export default {
   props: ["content"],
   components: {
     RichText,
     LargeMedia,
+    DownloadFile,
+    Slider,
   }
 }
 </script>

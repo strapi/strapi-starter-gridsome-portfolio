@@ -17,6 +17,11 @@
         "sections.large-media",
         "sections.rich-text"
       ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "meta.seo"
     }
   }
 }

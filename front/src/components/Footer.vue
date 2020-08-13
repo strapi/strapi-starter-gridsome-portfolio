@@ -3,7 +3,7 @@
     <p class="container text-xl font-medium">
       {{ $static.strapi.global.siteName }}
     </p>
-    <div class="container py-4 flex flex-row justify-between">
+    <div class="container py-4 flex flex-col-reverse md:flex-row justify-between gap-6 md:gap-0">
       <!-- Site name, contact email and copyright -->
       <div class="flex flex-col gap-2">
         <p>{{ $static.strapi.global.contactEmail }}</p>

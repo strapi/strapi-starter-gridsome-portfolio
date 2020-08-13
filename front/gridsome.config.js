@@ -5,7 +5,8 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Portfolio',
+  siteName: 'Strapi Gridsome Portfolio',
+  siteDescription: 'A portfolio site made using Gridsome and Strapi',
   plugins: [
     {
       use: '@gridsome/source-graphql',

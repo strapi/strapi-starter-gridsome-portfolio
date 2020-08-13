@@ -1,14 +1,67 @@
 <template>
   <Layout>
-    <h1>About us</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error doloremque omnis animi, eligendi magni a voluptatum, vitae, consequuntur rerum illum odit fugit assumenda rem dolores inventore iste reprehenderit maxime! Iusto.</p>
+    <Content :content="$page.strapi.about.content" class="mt-10" />
   </Layout>
 </template>
 
 <script>
+import Content from '~/components/Content'
+
 export default {
+  components: {
+    Content,
+  },
   metaInfo: {
     title: 'About us'
   }
 }
 </script>
+
+<page-query>
+query {
+  strapi {
+    about {
+      content {
+        __typename
+        ... on strapiTypes_ComponentSectionsRichText {
+          id
+          content
+        }
+        ... on strapiTypes_ComponentSectionsLargeMedia {
+          id
+          media {
+            id
+            url
+            mime
+          }
+          description
+        }
+        ... on strapiTypes_ComponentSectionsImagesSlider {
+          id
+          title
+          images {
+            id
+            url
+          }
+        }
+        ... on strapiTypes_ComponentSectionsDownloadFile {
+          id
+          title
+          file {
+            id
+            url
+          }
+        }
+      }
+      seo {
+        title
+        description
+        shareImage {
+          id
+          url
+        }
+      }
+    }
+  }
+}
+</page-query>

@@ -1,18 +1,18 @@
 {
-  "collectionName": "components_elements_links",
+  "collectionName": "components_meta_seos",
   "info": {
-    "name": "socialNetwork",
-    "icon": "link"
+    "name": "seo",
+    "icon": "robot"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
     },
-    "url": {
-      "type": "string"
+    "description": {
+      "type": "text"
     },
-    "icon": {
+    "shareImage": {
       "model": "file",
       "via": "related",
       "allowedTypes": [

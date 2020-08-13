@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex flex-col md:flex-row gap-6">
+  <div class="container flex flex-col md:flex-row md:gap-6">
     <g-link
       :to="'project/' + project.slug"
       class="w-full md:w-6/12 flex-shrink-0"
@@ -7,7 +7,7 @@
     <g-image
       :alt="project.title"
       :src="getStrapiMedia(project.coverImage.url)"
-      class="w-full h-auto"
+      class="w-full h-auto rounded-sm"
     />
     </g-link>
     <div class="flex flex-col justify-between py-4">
@@ -21,7 +21,7 @@
           <div
             v-for="category in project.categories"
             :key="category.id"
-            class="bg-secondary-100 text-secondary-900 uppercase tracking-wide px-1 text-sm font-semibold"
+            class="bg-secondary-100 text-secondary-900 uppercase tracking-wide px-1 text-sm font-semibold rounded-sm"
           >
             {{ category.title }}
           </div>

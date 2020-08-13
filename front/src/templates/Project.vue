@@ -1,14 +1,16 @@
 <template>
   <Layout>
-    <div class="prose md:prose-lg mx-auto mt-10">
-      <h1>
-        {{ $page.strapi.projects[0].title }}
-      </h1>
-      <p class="font-medium">{{ $page.strapi.projects[0].description }}</p>
-      <g-image
-        :alt="$page.strapi.projects[0].title"
-        :src="getStrapiMedia($page.strapi.projects[0].coverImage.url)"
-      />
+    <div class="container">
+      <div class="prose md:prose-lg mx-auto mt-10">
+        <h1>
+          {{ $page.strapi.projects[0].title }}
+        </h1>
+        <p class="font-medium">{{ $page.strapi.projects[0].description }}</p>
+        <g-image
+          :alt="$page.strapi.projects[0].title"
+          :src="getStrapiMedia($page.strapi.projects[0].coverImage.url)"
+        />
+      </div>
     </div>
     <Content :content="$page.strapi.projects[0].content" class="mt-8" />
   </Layout>
@@ -77,6 +79,11 @@ export default {
   },
   components: {
     Content,
-  }
+  },
+  metaInfo() {
+    return {
+      title: this.$page.strapi.projects[0].title,
+    }
+  },
 }
 </script>

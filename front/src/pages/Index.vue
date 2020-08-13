@@ -1,11 +1,13 @@
 <template>
   <Layout>
     <div class="container">
-      <h1 class="text-4xl font-normal mt-4">{{ $page.strapi.home.title }}</h1>
-      <div class="w-full md:w-9/12 mt-2">
+      <h1 class="text-4xl font-normal mt-8">{{ $page.strapi.home.title }}</h1>
+      <div class="mt-2 w-full md:w-9/12">
         <RichText :data="{ content: $page.strapi.home.bio }" />
       </div>
-      <h2 class="inline-block px-2 -mx-2 text-2xl mt-6 mb-6 bg-primary-200">
+      <h2
+        class="text-lg uppercase text-primary-700 mb-6 mt-4 tracking-wide font-medium"
+      >
         My latest projects
       </h2>
     </div>
@@ -29,7 +31,7 @@ query {
       bio
     }
     # List projects
-    projects {
+    projects(sort: "date:desc") {
       title
       slug
       description
