@@ -81,8 +81,42 @@ export default {
     Content,
   },
   metaInfo() {
+    const { title, description, coverImage } = this.$page.strapi.projects[0]
+    const image = getStrapiMedia(coverImage.url)
     return {
-      title: this.$page.strapi.projects[0].title,
+      title,
+      meta: [
+        {
+          key: 'og:title',
+          name: 'og:title',
+          content: title,
+        },
+        {
+          key: 'twitter:title',
+          name: 'twitter:title',
+          content: title,
+        },
+        {
+          key: 'og:description',
+          name: 'og:description',
+          content: description,
+        },
+        {
+          key: 'twitter:description',
+          name: 'twitter:description',
+          content: description,
+        },
+        {
+          key: 'og:image',
+          name: 'og:image',
+          content: image,
+        },
+        {
+          key: 'twitter:image',
+          name: 'twitter:image',
+          content: image,
+        },
+      ]
     }
   },
 }
