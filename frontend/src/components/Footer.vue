@@ -1,9 +1,9 @@
 <template>
-  <footer class="mt-10 pt-6 bg-gray-200">
+  <footer class="mt-24 pt-8 pb-8 bg-gray-200">
     <p class="container text-xl font-medium">
       {{ $static.strapi.global.siteName }}
     </p>
-    <div class="container py-4 flex flex-col-reverse md:flex-row justify-between gap-6 md:gap-0">
+    <div class="container mt-6 flex flex-col-reverse md:flex-row justify-between gap-6 md:gap-0">
       <!-- Site name, contact email and copyright -->
       <div class="flex flex-col gap-2">
         <p>{{ $static.strapi.global.contactEmail }}</p>
@@ -26,7 +26,7 @@
         </li>
       </ul>
       <!-- Social network links -->
-      <ul class="flex flex-col gap-1">
+      <ul class="flex flex-col gap-1 md:-mt-1">
         <li
           v-for="socialNetwork in $static.strapi.global.socialNetworks" 
           :key="socialNetwork.id"
