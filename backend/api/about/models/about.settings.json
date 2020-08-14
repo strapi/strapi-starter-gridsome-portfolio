@@ -12,7 +12,6 @@
     "content": {
       "type": "dynamiczone",
       "components": [
-        "sections.download-file",
         "sections.images-slider",
         "sections.large-media",
         "sections.rich-text"

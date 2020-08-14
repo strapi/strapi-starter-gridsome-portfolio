@@ -11,9 +11,6 @@
       <div v-if="contentSection.__typename === 'strapiTypes_ComponentSectionsLargeMedia'">
         <LargeMedia :data="contentSection" />
       </div>
-      <div v-if="contentSection.__typename === 'strapiTypes_ComponentSectionsDownloadFile'">
-        <DownloadFile :data="contentSection" />
-      </div>
       <div v-if="contentSection.__typename === 'strapiTypes_ComponentSectionsImagesSlider'">
         <Slider :data="contentSection" />
       </div>
@@ -24,7 +21,6 @@
 <script>
 import RichText from '~/components/RichText'
 import LargeMedia from '~/components/LargeMedia'
-import DownloadFile from '~/components/DownloadFile'
 import Slider from '~/components/Slider'
 
 export default {
@@ -32,7 +28,6 @@ export default {
   components: {
     RichText,
     LargeMedia,
-    DownloadFile,
     Slider,
   }
 }
