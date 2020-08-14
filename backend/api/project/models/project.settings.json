@@ -28,8 +28,7 @@
       "components": [
         "sections.rich-text",
         "sections.large-media",
-        "sections.images-slider",
-        "sections.download-file"
+        "sections.images-slider"
       ]
     },
     "coverImage": {
