@@ -85,5 +85,60 @@
         }
       ]
     }
-  ]
+  ],
+  "home": {
+    "title":"Strapi portfolio starter",
+    "bio":"This is a sample portfolio website. All this site's data is managed in a [Strapi project](https://strapi.io). The frontend was built with [Gridsome](https://gridsome.org), a Vue.js framework to build static sites. You can use this starter and customize it to build your own portfolio. You can also check out our other [Strapi starters](https://github.com/strapi?q=starter).",
+    "seo":{
+      "title":"Strapi Gridsome portfolio demo",
+      "description":"A sample application made with Strapi and Gridsome.",
+      "shareImage":null
+    }
+  },
+  "about": {
+    "id":1,
+    "content":[
+      {
+        "__component":"sections.rich-text",
+        "content":"# About me\n\nThis is a section where you get to talk about yourself. Show off your personality, interests, or childhood pictures.\n\nFor example, here are my hobbies:\n\n* Scuba diving\n* Hiking\n* Karaoke nights"
+      },
+      {
+        "__component":"sections.large-media",
+        "description":"My family last summer",
+        "media":null
+      },
+      {
+        "__component":"sections.rich-text",
+        "content":"Again, you can add as much content as you want here. People want to get to know you!\n\nYou can also write *italic* or **bold** text.\n\n> Wow this about section looks great\n>\n> -- A happy Strapi user\n"
+      }
+    ],
+    "seo":{
+      "title":"About me",
+      "description":"Me, my life, my hobbies, and a summary of what I do outside of work.",
+      "shareImage":null
+    }
+  },
+  "global": {
+    "siteName":"Portfolio",
+    "contactEmail":"contact@email.com",
+    "siteLanguage":"en",
+    "socialNetworks":[
+      {
+        "title":"Twitter",
+        "url":"#",
+        "icon":null
+      },
+      {
+        "title":"LinkedIn",
+        "url":"#",
+        "icon":null
+      },
+      {
+        "title":"Instagram",
+        "url":"#",
+        "icon":null
+      }
+    ],
+    "favicon":null
+  }
 }

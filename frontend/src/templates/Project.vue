@@ -55,14 +55,6 @@ query ($slug: String!) {
             url
           }
         }
-        ... on strapiTypes_ComponentSectionsDownloadFile {
-          id
-          title
-          file {
-            id
-            url
-          }
-        }
       }
     }
   }

@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require("path");
-const { categories, projects } = require('../data/data.json');
+const { categories, projects, about, home, global } = require('../data/data.json');
 
 async function setPublicPermissions(newPermissions) {
   // Find the ID of the public role
@@ -74,11 +74,15 @@ async function createEntry(model, entry, files) {
 }
 
 async function importSeedData(files) {
-  const getFile = (data, model, key) => {
+  const getFile = (data, contentType) => {
     // Guess the file name based on model and key
     let fileNameWithoutExt = '';
-    if (model === 'project') {
+    if (contentType === 'project') {
       fileNameWithoutExt = data.slug;
+    } else if (contentType === 'home') {
+      fileNameWithoutExt = 'global';
+    } else if (contentType === 'socialNetwork') {
+      fileNameWithoutExt = data.title.toLowerCase();
     }
 
     // Find the right file
@@ -112,9 +116,38 @@ async function importSeedData(files) {
     await createEntry('project', project, files);
   });
 
+  // Prepare global data
+  const globalPromise = async () => {
+    // Add favicon image
+    const favicon = getFile(null, 'home');
+    const files = {
+      favicon,
+    };
+    // Add icon for each social network
+    global.socialNetworks.forEach((network, index) => {
+      files[`socialNetworks.${index}.icon`] = getFile(network, 'socialNetwork');
+    });
+    await createEntry('global', global, files);
+  }
+
+  // Prepare home page
+  const homePromise = async () => {
+    const shareImage = getFile(null, 'home');
+    const files = {
+      "seo.shareImage": shareImage,
+    }
+    await createEntry('home', home, files);
+  };
+
+  const aboutPromise = async () => {
+    const shareImage = 
+  };
   // Actually load all entries in Strapi
   await Promise.all(categoriesPromises);
   await Promise.all(projectsPromises);
+  await globalPromise();
+  await homePromise();
+  await aboutPromise();
 }
 
 async function start() {
