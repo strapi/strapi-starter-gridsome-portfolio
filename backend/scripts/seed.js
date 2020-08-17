@@ -1,5 +1,3 @@
-'use strict';
-
 const fs = require('fs');
 const path = require("path");
 const { categories, projects, about, home, global } = require('../data/data.json');
@@ -73,31 +71,15 @@ async function createEntry(model, entry, files) {
   }
 }
 
-async function importSeedData(files) {
-  const getFile = (data, contentType) => {
-    // Guess the file name based on model and key
-    let fileNameWithoutExt = '';
-    if (contentType === 'project') {
-      fileNameWithoutExt = data.slug;
-    } else if (contentType === 'home') {
-      fileNameWithoutExt = 'global';
-    } else if (contentType === 'socialNetwork') {
-      fileNameWithoutExt = data.title.toLowerCase();
-    }
-
-    // Find the right file
-    const fileName = files.find(file => file.includes(fileNameWithoutExt));
-    return getFileData(fileName);
-  };
-
-  // Prepare categories
-  const categoriesPromises = categories.map((category) => {
+async function importCategories() {
+  return categories.map((category) => {
     return strapi.services.category.create(category);
   });
+}
 
-  // Prepare projects
-  const projectsPromises = projects.map(async (project) => {
-    const coverImage = getFile(project, 'project');
+async function importProjects() {
+  return projects.map(async (project) => {
+    const coverImage = getFileData(`${project.slug}.jpg`);
     const files = {
       coverImage,
     };
@@ -115,39 +97,52 @@ async function importSeedData(files) {
     });
     await createEntry('project', project, files);
   });
+}
 
-  // Prepare global data
-  const globalPromise = async () => {
-    // Add favicon image
-    const favicon = getFile(null, 'home');
-    const files = {
-      favicon,
-    };
-    // Add icon for each social network
-    global.socialNetworks.forEach((network, index) => {
-      files[`socialNetworks.${index}.icon`] = getFile(network, 'socialNetwork');
-    });
-    await createEntry('global', global, files);
-  }
+async function importGlobal() {
+  // Add favicon image
+  const favicon = getFileData('favicon.png');
+  const files = {
+    favicon,
+  };
+  // Add icon for each social network
+  global.socialNetworks.forEach((network, index) => {
+    files[`socialNetworks.${index}.icon`] = getFileData(
+      `${network.title.toLowerCase()}.svg`
+    );
+  });
+  await createEntry('global', global, files);
+}
 
-  // Prepare home page
-  const homePromise = async () => {
-    const shareImage = getFile(null, 'home');
-    const files = {
-      "seo.shareImage": shareImage,
+async function importHome() {
+  const shareImage = getFileData('global.png');
+  const files = {
+    "seo.shareImage": shareImage,
+  };
+  await createEntry('home', home, files);
+}
+
+async function importAbout() {
+  const aboutImage = getFileData('about.jpg');
+  const files = {
+    "seo.shareImage": aboutImage,
+  };
+  
+  // Check for files to upload in the dynamic zone
+  about.content.forEach((section, index) => {
+    if (section.__component === 'sections.large-media') {
+      files[`content.${index}.media`] = aboutImage;
+    } else if (section.__component === 'sections.images-slider') {
+      // All project cover images
+      const sliderFiles = projects.map((project) => {
+        return getFileData(`${project.slug}.jpg`);
+      });
+      files[`content.${index}.images`] = sliderFiles;
     }
-    await createEntry('home', home, files);
-  };
-
-  const aboutPromise = async () => {
-    const shareImage = 
-  };
-  // Actually load all entries in Strapi
-  await Promise.all(categoriesPromises);
-  await Promise.all(projectsPromises);
-  await globalPromise();
-  await homePromise();
-  await aboutPromise();
+  });
+  
+  // Save in Strapi
+  await createEntry('about', about, files);
 }
 
 async function start() {
@@ -162,15 +157,16 @@ async function start() {
     home: ['find'],
     project: ['find', 'findone'],
   });
-
-  // Load files from upload directory
-  const files = fs.readdirSync(`./data/uploads`);
   
-  // Create entries
-  await importSeedData(files);
-  console.log('done');
-
+  // Create all entries
+  await importCategories();
+  await importProjects();
+  await importGlobal();
+  await importHome();
+  await importAbout();
+  
   // Close Strapi to end the script
+  console.log('done');
   strapi.stop(0);
 };
 
