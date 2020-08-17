@@ -4,6 +4,39 @@ const fs = require('fs');
 const path = require("path");
 const { categories, projects } = require('../data/data.json');
 
+async function setPublicPermissions(newPermissions) {
+  // Find the ID of the public role
+  const publicRole = await strapi
+    .query("role", "users-permissions")
+    .findOne({ type: "public" });
+
+  // List all available permissions
+  const publicPermissions = await strapi
+    .query("permission", "users-permissions")
+    .find({ type: "application", role: publicRole.id });
+
+  // Update permission to match new config
+  const controllersToUpdate = Object.keys(newPermissions);
+  const updatePromises = publicPermissions
+    .filter((permission) => {
+      // Only update permissions included in newConfig
+      if (!controllersToUpdate.includes(permission.controller)) {
+        return false;
+      }
+      if (!newPermissions[permission.controller].includes(permission.action)) {
+        return false;
+      }
+      return true;
+    })
+    .map((permission) => {
+      // Enable the selected permissions
+      return strapi
+        .query("permission", "users-permissions")
+        .update({ id: permission.id }, { enabled: true })
+    });
+  await Promise.all(updatePromises);
+}
+
 function getFilesizeInBytes(filePath) {
   const stats = fs.statSync(filePath);
   const fileSizeInBytes = stats["size"];
@@ -24,12 +57,6 @@ function getFileData(fileName) {
     size,
     type: mimeType,
   }
-}
-
-// Go through dynamic zone components and upload files
-function uploadDynamicZoneFiles(content) {
-  // TODO: go through each component of a dynamic zone
-  // and check if any files need to be uploaded
 }
 
 // Create an entry and attach files if there are any
@@ -73,7 +100,13 @@ async function importSeedData(files) {
     // Check if dynamic zone has attached files
     project.content.forEach((section, index) => {
       if (section.__component === 'sections.large-media') {
-        files[`content[${index}].media`] = getFileData('large-media.jpg');
+        files[`content.${index}.media`] = getFileData('large-media.jpg');
+      } else if (section.__component === 'sections.images-slider') {
+        // All project cover images
+        const sliderFiles = projects.map((project) => {
+          return getFileData(`${project.slug}.jpg`);
+        });
+        files[`content.${index}.images`] = sliderFiles;
       }
     });
     await createEntry('project', project, files);
@@ -88,6 +121,15 @@ async function start() {
   // Load Strapi
   const strapi = await require('strapi')().load();
 
+  // Allow read of application content types
+  await setPublicPermissions({
+    about: ['find'],
+    category: ['find', 'findone'],
+    global: ['find'],
+    home: ['find'],
+    project: ['find', 'findone'],
+  });
+
   // Load files from upload directory
   const files = fs.readdirSync(`./data/uploads`);
   
@@ -96,7 +138,7 @@ async function start() {
   console.log('done');
 
   // Close Strapi to end the script
-  strapi.stop();
+  strapi.stop(0);
 };
 
 start();
