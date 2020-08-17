@@ -44,14 +44,6 @@ query {
             url
           }
         }
-        ... on strapiTypes_ComponentSectionsDownloadFile {
-          id
-          title
-          file {
-            id
-            url
-          }
-        }
       }
       seo {
         title
