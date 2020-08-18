@@ -15,36 +15,6 @@ It relies on several Strapi features:
 
 On the frontend, we're using [Gridsome](https://gridsome.org/), a Vue.js framework for static sites. It uses GraphQL to query data and Tailwind CSS for styles.
 
-## Run the starter locally
-
-The easiest way to try this starter is to run it on your computer.
-
-First, you'll need to create your own copy of this starter. You can fork this repository or download it as a zip.
-
-### Backend development setup
-
-Open a terminal window and cd into the Strapi directory
-
-```sh
-cd backend
-```
-
-If you want to change the host or the port Copy the .env.example file in this directory to a .env file (which will be ignored by Git):
-
-```sh
-cp .env.example .env
-```
-
-In `.env`, enter the values that match your environment.
-
-Finally, start running Strapi:
-
-```sh
-yarn develop
-```
-
-Sample seed data will be imported the first time you run this project.
-
 ## Getting started
 
 Clone the repository:
