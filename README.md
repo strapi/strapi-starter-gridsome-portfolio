@@ -74,4 +74,13 @@ npm run develop
 
 The Gridsome server will run here => [http://localhost:8080](http://localhost:8080)
 
+## Deploying to production
+
+You will need to deploy the `frontend` and `backend` projects separately. Here are the docs to deploy each one:
+
+* [Deploy Strapi](https://strapi.io/documentation/v3.x/admin-panel/deploy.html#deployment)
+* [Deploy Gridsome](https://gridsome.org/docs/deployment/)
+
+Don't forget to set up your environment variables on your production apps.
+
 Have fun using this starter!
