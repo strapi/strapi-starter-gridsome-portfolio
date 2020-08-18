@@ -54,13 +54,7 @@ Make sure you're in the `frontend` directory:
 cd frontend
 ```
 
-Copy the `.env.example` to a `.env` file:
-
-```bash
-cp .env.example .env
-```
-
-Finally, install dependencies and start the Gridsome server:
+Install dependencies and start the Gridsome server:
 
 ```bash
 # Using yarn
