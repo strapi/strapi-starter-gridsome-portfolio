@@ -1,3 +1,4 @@
+const fs = require('fs-extra');
 
 async function postInstall() {
   // Path of the package.json file
@@ -9,10 +10,11 @@ async function postInstall() {
       const packageJSON = await fs.readJSON(filePath);
 
       // Change the uuid inside the package.json
-      await fs.writeJson(filePath, {
+      const newPackageJSON = {
         ...packageJSON,
         strapi: { uuid: `STRAPI-STARTER-GRIDSOME-PORTFOLIO-PRODUCTION` },
-      });
+      };
+      await fs.writeJson(filePath, newPackageJSON, { spaces: 2 });
     }
   } catch (e) {
     console.error(e);
