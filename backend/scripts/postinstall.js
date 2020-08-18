@@ -19,7 +19,7 @@ async function postInstall() {
   }
 };
 
-postinstall().catch(error => {
+postInstall().catch(error => {
   console.error(error);
   process.exit(1);
 });
