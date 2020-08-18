@@ -21,8 +21,6 @@ The easiest way to try this starter is to run it on your computer.
 
 First, you'll need to create your own copy of this starter. You can fork this repository or download it as a zip.
 
-## Backend
-
 ### Backend development setup
 
 Open a terminal window and cd into the Strapi directory
@@ -31,7 +29,7 @@ Open a terminal window and cd into the Strapi directory
 cd backend
 ```
 
-Copy the .env.example file in this directory to a .env file (which will be ignored by Git):
+If you want to change the host or the port Copy the .env.example file in this directory to a .env file (which will be ignored by Git):
 
 ```sh
 cp .env.example .env
@@ -45,3 +43,65 @@ Finally, start running Strapi:
 yarn develop
 ```
 
+Sample seed data will be imported the first time you run this project.
+
+## Getting started
+
+Clone the repository:
+
+```
+git clone https://github.com/strapi/strapi-starter-gridsome-portfolio.git
+cd strapi-starter-gridsome-portfolio
+```
+
+### Backend
+
+Make sure you're in the `backend` directory:
+
+```bash
+cd backend
+```
+
+Install dependencies and run your server:
+
+```bash
+# Using yarn
+yarn install
+yarn develop
+
+# Using npm
+npm install
+npm run develop
+```
+
+The first time you start your project, sample seed data will be imported.
+
+### Frontend
+
+Make sure you're in the `frontend` directory:
+
+```bash
+cd frontend
+```
+
+Copy the `.env.example` to a `.env` file:
+
+```bash
+cp .env.example .env
+```
+
+Finally, install dependencies and start the Gridsome server:
+
+```bash
+# Using yarn
+yarn install
+yarn develop
+
+# Using npm
+npm install
+npm run develop
+```
+
+The Gridsome server will run here => [http://localhost:8080](http://localhost:8080)
+
+Have fun using this starter!
