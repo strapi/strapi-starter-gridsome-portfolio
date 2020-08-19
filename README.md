@@ -1,8 +1,8 @@
 # Strapi Starter Gridsome Portfolio
 
-Gridsome starter for creating a corporate site with Strapi.
+Gridsome starter for creating a corporate site with Strapi. [**View the live demo here.**](https://strapi-starter-gridsome-portfolio.vercel.app/)
 
-![screen](medias/screen-website.png)
+[![screen](medias/screen-website.png)](https://strapi-starter-gridsome-portfolio.vercel.app/)
 
 This starter allows you to easily create a website to showcase your work. It also makes it easy to keep it up to date thanks to Strapi.
 
