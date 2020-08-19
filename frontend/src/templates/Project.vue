@@ -64,6 +64,7 @@ query ($slug: String!) {
 <script>
 import Content from '~/components/Content'
 import { getStrapiMedia } from '~/utils/medias'
+import { getMetaTags } from '~/utils/seo'
 
 export default {
   methods: {
@@ -77,38 +78,7 @@ export default {
     const image = getStrapiMedia(coverImage.url)
     return {
       title,
-      meta: [
-        {
-          key: 'og:title',
-          name: 'og:title',
-          content: title,
-        },
-        {
-          key: 'twitter:title',
-          name: 'twitter:title',
-          content: title,
-        },
-        {
-          key: 'og:description',
-          name: 'og:description',
-          content: description,
-        },
-        {
-          key: 'twitter:description',
-          name: 'twitter:description',
-          content: description,
-        },
-        {
-          key: 'og:image',
-          name: 'og:image',
-          content: image,
-        },
-        {
-          key: 'twitter:image',
-          name: 'twitter:image',
-          content: image,
-        },
-      ]
+      meta: getMetaTags(title, description, image),
     }
   },
 }

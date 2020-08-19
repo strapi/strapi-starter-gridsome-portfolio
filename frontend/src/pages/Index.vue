@@ -29,6 +29,15 @@ query {
     home {
       title
       bio
+      # Metadata for SEO
+      seo {
+        title
+        description
+        shareImage {
+          id
+          url
+        }
+      }
     }
     # List projects
     projects(sort: "date:desc") {
@@ -52,6 +61,7 @@ query {
 import ProjectCard from '~/components/ProjectCard'
 import RichText from '~/components/RichText'
 import { getStrapiMedia } from '~/utils/medias'
+import { getMetaTags } from '~/utils/seo'
 
 export default {
   methods: {
@@ -60,7 +70,15 @@ export default {
   components: {
     ProjectCard,
     RichText,
-  }
+  },
+  metaInfo() {
+    const { title, description, shareImage } = this.$page.strapi.home.seo
+    const image = getStrapiMedia(shareImage.url)
+    return {
+      title,
+      meta: getMetaTags(title, description, image),
+    }
+  },
 }
 </script>
 

@@ -6,14 +6,21 @@
 
 <script>
 import Content from '~/components/Content'
+import { getStrapiMedia } from '~/utils/medias'
+import { getMetaTags } from '~/utils/seo'
 
 export default {
   components: {
     Content,
   },
-  metaInfo: {
-    title: 'About us'
-  }
+  metaInfo() {
+    const { title, description, shareImage } = this.$page.strapi.about.seo
+    const image = getStrapiMedia(shareImage.url)
+    return {
+      title,
+      meta: getMetaTags(title, description, image),
+    }
+  },
 }
 </script>
 
