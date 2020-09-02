@@ -2,7 +2,7 @@
 
 Gridsome starter for creating a corporate site with Strapi.
 
-[View the live demo](https://strapi-starter-gridsome-portfolio.vercel.app/) • [Watch the video tutorial](https://www.youtube.com/watch?v=4g3Pzj-wdXo&feature=youtu.be)
+[View the live demo](https://strapi-starter-gridsome-portfolio.vercel.app/) • [Watch the video tutorial](https://www.youtube.com/watch?v=4g3Pzj-wdXo&feature=youtu.be) • [Read the blog post](https://strapi.io/blog/strapi-starter-gridsome-portfolio)
 
 [![screen](medias/screen-website.png)](https://strapi-starter-gridsome-portfolio.vercel.app/)
 
@@ -19,12 +19,9 @@ On the frontend, we're using [Gridsome](https://gridsome.org/), a Vue.js framewo
 
 ## Getting started
 
-Clone the repository:
+The easiest way to try this starter is to run it locally on your computer.
 
-```
-git clone https://github.com/strapi/strapi-starter-gridsome-portfolio.git
-cd strapi-starter-gridsome-portfolio
-```
+First, you'll need to create your own copy of this starter. You can do so by clicking [the "Use this template" button](https://github.com/strapi/strapi-starter-gridsome-portfolio/generate) on GitHub, and filling the [form](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
 
 ### Backend
 
