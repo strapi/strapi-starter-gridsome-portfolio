@@ -39,7 +39,7 @@ The Strapi server will automatically start and import sample seed data.
 
 ### Frontend
 
-Leave the Strapi backend running in the background. Open another terminal tab, make sure you're in the `frontend` directory:
+Leave the Strapi backend running in the background. Open another terminal tab, and make sure you're in the `frontend` directory:
 
 ```bash
 cd frontend
