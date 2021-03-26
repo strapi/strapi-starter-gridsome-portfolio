@@ -19,53 +19,33 @@ On the frontend, we're using [Gridsome](https://gridsome.org/), a Vue.js framewo
 
 ## Getting started
 
-The easiest way to try this starter is to run it locally on your computer.
+Use our `create-strapi-starter` CLI to create your project.
 
-First, you'll need to create your own copy of this starter. You can do so by clicking [the "Use this template" button](https://github.com/strapi/strapi-starter-gridsome-portfolio/generate) on GitHub, and filling the [form](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
-
-### Backend
-
-Create a Strapi project named `backend` using the [portfolio template](https://github.com/strapi/strapi-template-portfolio):
-
-```
+```sh
 # Using Yarn
-yarn create strapi-app backend --template https://github.com/strapi/strapi-template-portfolio
+yarn create strapi-starter my-project gridsome-portfolio
 
 # Or using NPM
-npx create-strapi-app backend --template https://github.com/strapi/strapi-template-portfolio
+npx create-strapi-starter my-project gridsome-portfolio
 ```
 
-The Strapi server will automatically start and import sample seed data.
+The CLI will create a monorepo, install dependencies, and run your project automatically.
 
-### Frontend
+The Gridsome frontend server will run here => [http://localhost:8080](http://localhost:8080)
 
-Leave the Strapi backend running in the background. Open another terminal tab, and make sure you're in the `frontend` directory:
-
-```bash
-cd frontend
-```
-
-Install dependencies and start the Gridsome server:
-
-```bash
-# Using yarn
-yarn install
-yarn develop
-
-# Using npm
-npm install
-npm run develop
-```
-
-The Gridsome server will run here => [http://localhost:8080](http://localhost:8080)
+The Strapi backend server will run here => [http://localhost:1337](http://localhost:1337)
 
 ## Deploying to production
 
 You will need to deploy the `frontend` and `backend` projects separately. Here are the docs to deploy each one:
 
-* [Deploy Strapi](https://strapi.io/documentation/v3.x/admin-panel/deploy.html#deployment)
-* [Deploy Gridsome](https://gridsome.org/docs/deployment/)
+- [Deploy Strapi](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/deployment.html#hosting-provider-guides)
+- [Deploy Gridsome](https://gridsome.org/docs/deployment/)
 
-Don't forget to set up your environment variables on your production apps.
+Don't forget to setup the environment variables on your production app:
 
-Have fun using this starter!
+For the frontend the following environment variable is required: 
+- `GRIDSOME_STRAPI_URL`: URL of your Strapi backend, without trailing slash
+
+
+Enjoy this starter!
