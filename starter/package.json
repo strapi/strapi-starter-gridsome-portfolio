@@ -11,7 +11,7 @@
     "@tailwindcss/typography": "^0.2.0",
     "babel-runtime": "^6.26.0",
     "gridsome": "^0.7.0",
-    "gridsome-plugin-tailwindcss": "^3.0.1",
+    "gridsome-plugin-tailwindcss": "^4.1.1",
     "tailwindcss": "^1.6.2",
     "vue-markdown": "^2.2.4"
   }
