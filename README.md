@@ -17,6 +17,10 @@ It relies on several Strapi features:
 
 On the frontend, we're using [Gridsome](https://gridsome.org/), a Vue.js framework for static sites. It uses GraphQL to query data and Tailwind CSS for styles.
 
+This starter uses the [Strapi portfolio template](https://github.com/strapi/strapi-template-portfolio)
+
+Check out all of our starters [here](https://strapi.io/starters)
+
 ## Getting started
 
 Use our `create-strapi-starter` CLI to create your project.
