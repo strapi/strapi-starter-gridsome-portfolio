@@ -1,4 +1,4 @@
-**:no_entry: Deprecated**
+**:no_entry: DEPRECATED**
 
 This repository is no longer maintained and only works for Strapi v3. To find the newest Strapi v4 starters, check out the [starters-and-templates monorepo](https://github.com/strapi/starters-and-templates/).
 
