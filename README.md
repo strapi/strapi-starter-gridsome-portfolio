@@ -1,3 +1,9 @@
+**:no_entry: Deprecated**
+
+This repository is no longer maintained and only works for Strapi v3. To find the newest Strapi v4 starters, check out the [starters-and-templates monorepo](https://github.com/strapi/starters-and-templates/).
+
+---
+
 # Strapi Starter Gridsome Portfolio
 
 Gridsome starter for creating a corporate site with Strapi.
@@ -26,11 +32,7 @@ Check out all of our starters [here](https://strapi.io/starters)
 Use our `create-strapi-starter` CLI to create your project.
 
 ```sh
-# Using Yarn
-yarn create strapi-starter my-project gridsome-portfolio
-
-# Or using NPM
-npx create-strapi-starter my-project gridsome-portfolio
+npx create-strapi-starter@3 my-project gridsome-portfolio
 ```
 
 The CLI will create a monorepo, install dependencies, and run your project automatically.
@@ -50,6 +52,5 @@ Don't forget to setup the environment variables on your production app:
 
 For the frontend the following environment variable is required: 
 - `GRIDSOME_STRAPI_URL`: URL of your Strapi backend, without trailing slash
-
 
 Enjoy this starter!
